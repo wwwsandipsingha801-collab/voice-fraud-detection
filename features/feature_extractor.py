@@ -14,7 +14,7 @@ def extract_features(file_path):
 
 
 if __name__ == "__main__":
-    file = "../data/sample/sample.wav"
+    file = "data/sample/sample.wav"
     mfcc, spec = extract_features(file)
 
     print("MFCC shape:", mfcc.shape)
