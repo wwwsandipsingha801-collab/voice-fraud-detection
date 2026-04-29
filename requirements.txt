@@ -1,0 +1,11 @@
+numpy
+scipy
+librosa
+matplotlib
+torch
+fastapi
+uvicorn
+streamlit
+pandas
+scikit-learn
+joblib
