@@ -73,12 +73,17 @@ if mode == "Upload Mode":
                 res = requests.post(API_URL, files={"file": uploaded})
                 result = res.json()
 
+                # ✅ UPDATED LOGIC
                 if result["result"] == "Real Voice":
                     st.success("✅ Real Voice Detected")
                     st.balloons()
-                else:
+
+                elif result["result"] == "Fake Voice":
                     st.error("🚨 Fake Voice Detected")
                     st.warning("⚠️ Possible Fraud Attempt!")
+
+                else:
+                    st.warning("⚠️ Suspicious Voice Detected")
 
             except:
                 st.error("❌ Backend server not running!")
@@ -112,12 +117,17 @@ elif mode == "Live Detection Mode":
             res = requests.post(API_URL, files={"file": open(temp_file.name, "rb")})
             result = res.json()
 
+            # ✅ UPDATED LOGIC
             if result["result"] == "Real Voice":
                 st.success("✅ Real Voice Detected (Live)")
                 st.balloons()
-            else:
+
+            elif result["result"] == "Fake Voice":
                 st.error("🚨 Fake Voice Detected (Live)")
                 st.warning("⚠️ Possible Fraud Attempt!")
+
+            else:
+                st.warning("⚠️ Suspicious Voice Detected (Live)")
 
         except:
             st.error("❌ Backend server not running!")
